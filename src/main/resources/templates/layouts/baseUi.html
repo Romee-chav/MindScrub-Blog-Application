@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="baseLayout(title,content)">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title th:text="${title}">MindScribe</title>
+<!-- Favicon -->
+<link rel="icon" type="image/png"
+	th:href="@{/blog-assets/asset/favicon.png}">
+<link rel="stylesheet" th:href="@{/blog-assets/css/styles.css}">
+<!-- All Post Css -->
+<link rel="stylesheet" th:href="@{/blog-assets/css/all-posts.css}">
+<link rel="stylesheet"
+	href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css">
+</head>
+<body>
+
+	<!-- Header -->
+	<th:block th:if="${showHeader == null || showHeader}">
+		<div th:replace="~{layouts/header :: header}"></div>
+	</th:block>
+
+	<!-- main body section start -->
+	<div th:replace="${content}"></div>
+	<!-- main body section end -->
+	<!-- Footer -->
+	<th:block th:if="${showFooter == null || showFooter}">
+		<div th:replace="~{layouts/footer :: footer}"></div>
+	</th:block>
+
+	<script src="https://code.jquery.com/jquery-3.7.1.js"
+		integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+		crossorigin="anonymous"></script>
+	<script th:src="@{/blog-assets/js/script.js}"></script>
+	<script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+	<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const editorIds = ['shortDescEditor', 'contentEditor'];
+
+    editorIds.forEach(id => {
+
+        const element = document.querySelector(`#${id}`);
+
+        if (element) {
+
+            ClassicEditor
+                .create(element, {
+                    toolbar: [
+                        'heading',
+                        '|',
+                        'bold',
+                        'italic',
+                        'underline',
+                        'strikethrough',
+                        '|',
+                        'bulletedList',
+                        'numberedList',
+                        '|',
+                        'undo',
+                        'redo'
+                    ]
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
+        }
+
+    });
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+	<header class="header" th:fragment="header">
+
+		<div class="nav container">
+
+			<!-- Logo -->
+			<a th:href="@{/}" class="logo"> <img
+				th:src="@{/blog-assets/asset/logo.png}" alt="MindScribe Logo"
+				style="height: 50px; vertical-align: middle;"> Mind<span>Scribe</span>
+
+			</a>
+
+			<!-- Center Navigation -->
+			<div class="nav-center">
+
+				<a th:href="@{/}">Home</a> <a th:href="@{/about}">About Us</a> <a
+					th:href="@{/contact}">Contact</a>
+
+			</div>
+
+			<!-- Right Navigation -->
+			<div class="nav-links">
+
+				<a th:href="@{/auth/login}" class="btn auth-btn"> Login </a> <a
+					th:href="@{/auth/register}" class="btn auth-btn"> Signup </a>
+
+			</div>
+
+			<!-- Hamburger -->
+
+			<div class="hamburger" onclick="toggleMenu()">
+
+				<div></div>
+				<div></div>
+				<div></div>
+
+			</div>
+
+		</div>
+
+	</header>
+
+</body>
+</html>

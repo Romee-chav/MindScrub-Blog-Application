@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/baseUi :: baseLayout('MindScribe - All Post', ~{::section})}">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Posts</title>
+</head>
+
+<body>
+	<section>
+		<div class="table-container">
+			<h2>All Posts</h2>
+
+			<table id="postsTable">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Post Title</th>
+						<th>Category</th>
+						<th>Author</th>
+						<th>Date</th>
+						<th>Status</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td data-label="#">1</td>
+						<td data-label="Post Title">How to Learn Spring Boot</td>
+						<td data-label="Category"><span class="badge bg-primary">Programming</span></td>
+						<td data-label="Author">Romee</td>
+						<td data-label="Date">09 Sep 2025</td>
+						<td data-label="Status"><span class="badge bg-success">Approved</span></td>
+						<td data-label="Actions">
+							<button class="comment-btn">Edit</button>
+							<button class="comment-btn delete">Delete</button>
+						</td>
+					</tr>
+					<tr>
+						<td data-label="#">2</td>
+						<td data-label="Post Title">Understanding Microservices</td>
+						<td data-label="Category"><span class="badge bg-info">Technology</span></td>
+						<td data-label="Author">Admin</td>
+						<td data-label="Date">07 Sep 2025</td>
+						<td data-label="Status"><span class="badge bg-warning">Pending</span></td>
+						<td data-label="Actions">
+							<button class="comment-btn">Edit</button>
+							<button class="comment-btn delete">Delete</button>
+						</td>
+					</tr>
+					<tr>
+						<td data-label="#">3</td>
+						<td data-label="Post Title">Best Practices in Java</td>
+						<td data-label="Category"><span class="badge bg-secondary">Java</span></td>
+						<td data-label="Author">Romee</td>
+						<td data-label="Date">05 Sep 2025</td>
+						<td data-label="Status"><span class="badge bg-danger">Rejected</span></td>
+						<td data-label="Actions">
+							<button class="comment-btn">Edit</button>
+							<button class="comment-btn delete">Delete</button>
+						</td>
+					</tr>
+					<!-- Additional rows will be generated from backend -->
+				</tbody>
+			</table>
+
+
+			<!-- Pagination -->
+			<div class="pagination container">
+				<a href="#" class="page-btn prev">« Prev</a> <a href="#"
+					class="page-btn active">1</a> <a href="#" class="page-btn">2</a> <a
+					href="#" class="page-btn">3</a> <a href="#" class="page-btn next">Next
+					»</a>
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/baseUi :: baseLayout('MindScribe - View Post', ~{::section})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog-post</title>
+</head>
+
+<body>
+   <section>
+    <!-- main start -->
+    <main>
+        <!-- Post Content -->
+        <section class="post-header">
+            <div class="header-content post-container">
+                <a th:href="@{/}" class="back-home">Back To Home</a>
+                <!-- Title -->
+                <h1 class="header-title">Lorem ipsum dolor sit amet.</h1>
+                <!-- Post Image -->
+                <img th:src="@{/blog-assets/img/post-1.jpg}" alt="" class="header-img">
+            </div>
+        </section>
+        <section class="post-content post-container">
+            <h2 class="sub-heading">Create Best UX Design</h2>
+            <p class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex reprehenderit soluta qui
+                veniam amet explicabo, quo esse laborum quas inventore laudantium quaerat rem. Fuga unde necessitatibus
+                quam assumenda omnis quibusdam sed dolor cum beatae exercitationem? Iusto nulla, sit doloremque quisquam
+                quam officia quae optio autem unde ad aperiam adipisci veritatis.</p>
+            <p class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex reprehenderit soluta qui
+                veniam amet explicabo, quo esse laborum quas inventore laudantium quaerat rem. Fuga unde necessitatibus
+                quam assumenda omnis quibusdam sed dolor cum beatae exercitationem? Iusto nulla, sit doloremque quisquam
+                quam officia quae optio autem unde ad aperiam adipisci veritatis.</p>
+            <h2 class="sub-heading">Create Best UX Design</h2>
+            <p class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex reprehenderit soluta qui
+                veniam amet explicabo, quo esse laborum quas inventore laudantium quaerat rem. Fuga unde necessitatibus
+                quam assumenda omnis quibusdam sed dolor cum beatae exercitationem? Iusto nulla, sit doloremque quisquam
+                quam officia quae optio autem unde ad aperiam adipisci veritatis.</p>
+            <p class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex reprehenderit soluta qui
+                veniam amet explicabo, quo esse laborum quas inventore laudantium quaerat rem. Fuga unde necessitatibus
+                quam assumenda omnis quibusdam sed dolor cum beatae exercitationem? Iusto nulla, sit doloremque quisquam
+                quam officia quae optio autem unde ad aperiam adipisci veritatis.</p>
+            <p class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex reprehenderit soluta qui
+                veniam amet explicabo, quo esse laborum quas inventore laudantium quaerat rem. Fuga unde necessitatibus
+                quam assumenda omnis quibusdam sed dolor cum beatae exercitationem? Iusto nulla, sit doloremque quisquam
+                quam officia quae optio autem unde ad aperiam adipisci veritatis.</p>
+        </section>
+        <!-- Comment Section -->
+        <section class="comment-section post-container">
+            <h3>
+                <span style="margin-right: 8px;">💬</span>
+                <button id="commentBtn" class="comment-btn">
+                    Comments (<span id="commentCount">2</span>)
+                </button>
+            </h3>
+
+            <!-- Example comments -->
+            <div class="comment">
+                <strong>Alice:</strong> Great post! Learned a lot. 👏
+            </div>
+            <hr>
+            <div class="comment">
+                <strong>John:</strong> Thanks for sharing this information.
+            </div>
+            <hr>
+            <br>
+            <form class="comment-form">
+                <h2 class="sub-heading">Leave a Comment</h2>
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="comment" rows="5" placeholder="Write your comment..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Post Comment</button>
+            </form>
+        </section>
+        <div class="share post-container">
+            <div class="share-title">Share this article</div>
+            <div class="social">
+                <a href=""><i class="bx bxl-facebook"></i></a>
+                <a href=""><i class="bx bxl-instagram"></i></a>
+                <a href=""><i class="bx bxl-twitter"></i></a>
+                <a href=""><i class="bx bxl-linkedin"></i></a>
+                <a href=""><i class="bx bxl-github"></i></a>
+            </div>
+        </div>
+    </main>
+    <!-- main end -->
+
+
+   </section>
+</body>
+
+</html>

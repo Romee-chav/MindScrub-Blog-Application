@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+	<footer class="footer container" th:fragment="footer">
+
+		<p>
+			&#169; <span th:text="${#dates.year(#dates.createNow())}"></span>
+			MindScribe — All Rights Reserved
+		</p>
+
+		<div class="social">
+
+			<a href="https://facebook.com" target="_blank"> <i
+				class="bx bxl-facebook"></i>
+			</a> <a href="https://instagram.com" target="_blank"> <i
+				class="bx bxl-instagram"></i>
+			</a> <a href="https://twitter.com" target="_blank"> <i
+				class="bx bxl-twitter"></i>
+			</a> <a href="https://linkedin.com" target="_blank"> <i
+				class="bx bxl-linkedin"></i>
+			</a> <a href="https://github.com" target="_blank"> <i
+				class="bx bxl-github"></i>
+			</a>
+
+		</div>
+
+	</footer>
+
+</body>
+</html>

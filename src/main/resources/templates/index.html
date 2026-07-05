@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/baseUi :: baseLayout('MindScribe - Home', ~{::section})}">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog</title>
+
+</head>
+
+<body>
+	<section>
+		<!-- main start -->
+		<main>
+			<section class="home" id="home">
+				<div class="home-text container">
+					<h2 class="home-title">Mind Scrub</h2>
+					<span class="home-subtitle"> Your source of great content</span>
+				</div>
+			</section>
+			<div class="post-filter container">
+				<span class="filter-item active-filter" data-filter="all">All</span>
+				<span class="filter-item" data-filter="technology">Technology</span>
+				<span class="filter-item" data-filter="lifestyle">Lifestyle</span> <span
+					class="filter-item" data-filter="travel">Travel</span> <span
+					class="filter-item" data-filter="food">Food</span> <span
+					class="filter-item" data-filter="education">Education</span>
+			</div>
+			<!-- 🔍 Search box -->
+			<div class="search-box">
+				<input type="text" placeholder="Search posts..." id="search-input">
+				<i class='bx bx-search'></i>
+			</div>
+			<!-- Post -->
+			<section class="post container">
+				<!-- Post box 1 -->
+				<div class="post-box">
+					<!-- Posts will be dynamically inserted here -->
+					<img src="img/post-1.jpg" alt="Loading..." class="post-img">
+					<h2 class="category">Mobile</h2>
+					<span class="post-title"> The Future of Mobile Technology:
+						Trends to Watch in 2024 </span> <span class="post-date">12 Feb
+						2022</span>
+					<p class="post-description">Mobile technology is evolving at a
+						rapid pace, with new innovations and trends emerging every year.
+						In 2024, we can expect to see significant advancements in areas
+						such as 5G connectivity, foldable devices, and augmented reality
+						(AR) applications. These developments will not only enhance user
+						experiences but also open up new possibilities for businesses and
+						developers. As mobile technology continues to integrate more
+						deeply into our daily lives, staying informed about these trends
+						will be crucial for anyone looking to leverage the power of mobile
+						in their personal or professional endeavors.</p>
+					<!-- Read More button -->
+					<a href="view-post.html" class="read-more">Read More</a>
+					<!-- Profile -->
+					<div class="profile">
+						<img src="img/profile-1.jpg" alt="" class="profile-img"> <span
+							class="profile-name">Marques Brown</span>
+					</div>
+				</div>
+				<!-- Post box 2 -->
+				<div class="post-box">
+					<!-- Posts will be dynamically inserted here -->
+					<img src="img/post-2.jpg" alt="Loading..." class="post-img">
+					<h2 class="category">Mobile</h2>
+					<a href="post-page.html" class="post-title"> The Future of
+						Mobile Technology: Trends to Watch in 2024 </a> <span
+						class="post-date">12 Feb 2022</span>
+					<p class="post-description">Mobile technology is evolving at a
+						rapid pace, with new innovations and trends emerging every year.
+						In 2024, we can expect to see significant advancements in areas
+						such as 5G connectivity, foldable devices, and augmented reality
+						(AR) applications. These developments will not only enhance user
+						experiences but also open up new possibilities for businesses and
+						developers. As mobile technology continues to integrate more
+						deeply into our daily lives, staying informed about these trends
+						will be crucial for anyone looking to leverage the power of mobile
+						in their personal or professional endeavors.</p>
+					<!-- Profile -->
+					<div class="profile">
+						<img src="img/profile-2.jpg" alt="" class="profile-img"> <span
+							class="profile-name">Marques Brown</span>
+					</div>
+				</div>
+				<!-- Post box 3 -->
+				<div class="post-box">
+					<!-- Posts will be dynamically inserted here -->
+					<img src="img/post-3.jpg" alt="Loading..." class="post-img">
+					<h2 class="category">Mobile</h2>
+					<a href="post-page.html" class="post-title"> The Future of
+						Mobile Technology: Trends to Watch in 2024 </a> <span
+						class="post-date">12 Feb 2022</span>
+					<p class="post-description">Mobile technology is evolving at a
+						rapid pace, with new innovations and trends emerging every year.
+						In 2024, we can expect to see significant advancements in areas
+						such as 5G connectivity, foldable devices, and augmented reality
+						(AR) applications. These developments will not only enhance user
+						experiences but also open up new possibilities for businesses and
+						developers. As mobile technology continues to integrate more
+						deeply into our daily lives, staying informed about these trends
+						will be crucial for anyone looking to leverage the power of mobile
+						in their personal or professional endeavors.</p>
+					<!-- Profile -->
+					<div class="profile">
+						<img src="img/profile-3.jpg" alt="" class="profile-img"> <span
+							class="profile-name">Marques Brown</span>
+					</div>
+				</div>
+				<!-- Post box 4 -->
+				<div class="post-box">
+					<!-- Posts will be dynamically inserted here -->
+					<img src="img/post-4.jpg" alt="Loading..." class="post-img">
+					<h2 class="category">Tech</h2>
+					<a href="post-page.html" class="post-title"> The Future of
+						Mobile Technology: Trends to Watch in 2024 </a> <span
+						class="post-date">12 Feb 2022</span>
+					<p class="post-description">Mobile technology is evolving at a
+						rapid pace, with new innovations and trends emerging every year.
+						In 2024, we can expect to see significant advancements in areas
+						such as 5G connectivity, foldable devices, and augmented reality
+						(AR) applications. These developments will not only enhance user
+						experiences but also open up new possibilities for businesses and
+						developers. As mobile technology continues to integrate more
+						deeply into our daily lives, staying informed about these trends
+						will be crucial for anyone looking to leverage the power of mobile
+						in their personal or professional endeavors.</p>
+					<!-- Profile -->
+					<div class="profile">
+						<img src="img/profile-4.jpg" alt="" class="profile-img"> <span
+							class="profile-name">Marques Brown</span>
+					</div>
+				</div>
+				<!-- Post box 5 -->
+				<div class="post-box">
+					<!-- Posts will be dynamically inserted here -->
+					<img src="img/post-5.jpg" alt="Loading..." class="post-img">
+					<h2 class="category">Tech</h2>
+					<a href="post-page.html" class="post-title"> The Future of
+						Mobile Technology: Trends to Watch in 2024 </a> <span
+						class="post-date">12 Feb 2022</span>
+					<p class="post-description">Mobile technology is evolving at a
+						rapid pace, with new innovations and trends emerging every year.
+						In 2024, we can expect to see significant advancements in areas
+						such as 5G connectivity, foldable devices, and augmented reality
+						(AR) applications. These developments will not only enhance user
+						experiences but also open up new possibilities for businesses and
+						developers. As mobile technology continues to integrate more
+						deeply into our daily lives, staying informed about these trends
+						will be crucial for anyone looking to leverage the power of mobile
+						in their personal or professional endeavors.</p>
+					<!-- Profile -->
+					<div class="profile">
+						<img src="img/profile-5.jpg" alt="" class="profile-img"> <span
+							class="profile-name">Marques Brown</span>
+					</div>
+				</div>
+				<!-- Post box 6 -->
+				<div class="post-box">
+					<!-- Posts will be dynamically inserted here -->
+					<img src="img/post-6.jpg" alt="Loading..." class="post-img">
+					<h2 class="category">Tech</h2>
+					<a href="post-page.html" class="post-title"> The Future of
+						Mobile Technology: Trends to Watch in 2024 </a> <span
+						class="post-date">12 Feb 2022</span>
+					<p class="post-description">Mobile technology is evolving at a
+						rapid pace, with new innovations and trends emerging every year.
+						In 2024, we can expect to see significant advancements in areas
+						such as 5G connectivity, foldable devices, and augmented reality
+						(AR) applications. These developments will not only enhance user
+						experiences but also open up new possibilities for businesses and
+						developers. As mobile technology continues to integrate more
+						deeply into our daily lives, staying informed about these trends
+						will be crucial for anyone looking to leverage the power of mobile
+						in their personal or professional endeavors.</p>
+					<!-- Profile -->
+					<div class="profile">
+						<img src="img/profile-6.jpg" alt="" class="profile-img"> <span
+							class="profile-name">Marques Brown</span>
+					</div>
+				</div>
+				<!-- Post box 7 -->
+				<div class="post-box">
+					<!-- Posts will be dynamically inserted here -->
+					<img src="img/post-7.jpg" alt="Loading..." class="post-img">
+					<h2 class="category">Travel</h2>
+					<a href="post-page.html" class="post-title"> The Future of
+						Mobile Technology: Trends to Watch in 2024 </a> <span
+						class="post-date">12 Feb 2022</span>
+					<p class="post-description">Mobile technology is evolving at a
+						rapid pace, with new innovations and trends emerging every year.
+						In 2024, we can expect to see significant advancements in areas
+						such as 5G connectivity, foldable devices, and augmented reality
+						(AR) applications. These developments will not only enhance user
+						experiences but also open up new possibilities for businesses and
+						developers. As mobile technology continues to integrate more
+						deeply into our daily lives, staying informed about these trends
+						will be crucial for anyone looking to leverage the power of mobile
+						in their personal or professional endeavors.</p>
+					<!-- Profile -->
+					<div class="profile">
+						<img src="img/profile-7.jpg" alt="" class="profile-img"> <span
+							class="profile-name">Marques Brown</span>
+					</div>
+				</div>
+				<!-- Post box 8 -->
+				<div class="post-box">
+					<!-- Posts will be dynamically inserted here -->
+					<img src="img/post-8.jpg" alt="Loading..." class="post-img">
+					<h2 class="category">Travel</h2>
+					<a href="post-page.html" class="post-title"> The Future of
+						Mobile Technology: Trends to Watch in 2024 </a> <span
+						class="post-date">12 Feb 2022</span>
+					<p class="post-description">Mobile technology is evolving at a
+						rapid pace, with new innovations and trends emerging every year.
+						In 2024, we can expect to see significant advancements in areas
+						such as 5G connectivity, foldable devices, and augmented reality
+						(AR) applications. These developments will not only enhance user
+						experiences but also open up new possibilities for businesses and
+						developers. As mobile technology continues to integrate more
+						deeply into our daily lives, staying informed about these trends
+						will be crucial for anyone looking to leverage the power of mobile
+						in their personal or professional endeavors.</p>
+					<!-- Profile -->
+					<div class="profile">
+						<img src="img/profile-8.jpg" alt="" class="profile-img"> <span
+							class="profile-name">Marques Brown</span>
+					</div>
+				</div>
+				<!-- Post box 9 -->
+				<div class="post-box">
+					<!-- Posts will be dynamically inserted here -->
+					<img src="img/post-9.jpg" alt="Loading..." class="post-img">
+					<h2 class="category">Travel</h2>
+					<a href="post-page.html" class="post-title"> The Future of
+						Mobile Technology: Trends to Watch in 2024 </a> <span
+						class="post-date">12 Feb 2022</span>
+					<p class="post-description">Mobile technology is evolving at a
+						rapid pace, with new innovations and trends emerging every year.
+						In 2024, we can expect to see significant advancements in areas
+						such as 5G connectivity, foldable devices, and augmented reality
+						(AR) applications. These developments will not only enhance user
+						experiences but also open up new possibilities for businesses and
+						developers. As mobile technology continues to integrate more
+						deeply into our daily lives, staying informed about these trends
+						will be crucial for anyone looking to leverage the power of mobile
+						in their personal or professional endeavors.</p>
+					<!-- Profile -->
+					<div class="profile">
+						<img src="img/profile-9.jpg" alt="" class="profile-img"> <span
+							class="profile-name">Marques Brown</span>
+					</div>
+				</div>
+			</section>
+			<!-- Pagination -->
+			<div class="pagination container">
+				<a href="#" class="page-btn prev">« Prev</a> <a href="#"
+					class="page-btn active">1</a> <a href="#" class="page-btn">2</a> <a
+					href="#" class="page-btn">3</a> <a href="#" class="page-btn next">Next
+					»</a>
+			</div>
+		</main>
+		<!-- main end -->
+
+	</section>
+</body>
+
+</html>

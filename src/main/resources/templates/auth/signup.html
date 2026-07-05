@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/baseUi :: baseLayout('MindScribe - Registration', ~{::section})}">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup</title>
+</head>
+
+<body>
+	<section>
+		<main>
+			<!-- Signup Form -->
+			<section class="auth-section">
+				<div class="auth-container">
+					<h2>Signup</h2>
+					<form>
+						<div class="form-group">
+							<label>Full Name</label> <input type="text"
+								placeholder="Enter your name" required>
+						</div>
+						<div class="form-group">
+							<label>Email</label> <input type="email"
+								placeholder="Enter your email" required>
+						</div>
+						<div class="form-group">
+							<label>Password</label> <input type="password"
+								placeholder="Create a password" required>
+						</div>
+						<button type="submit" class="btn">Signup</button>
+						<p class="auth-link">
+							Already have an account? <a th:href="@{/auth/login}">Login</a>
+						</p>
+					</form>
+					<!-- Social Login -->
+					<div class="social-login">
+						<p>Or Signup with</p>
+						<button class="social-btn google">
+							<i class='bx bxl-google'></i>Sign in With Google
+						</button>
+						<button class="social-btn facebook">
+							<i class='bx bxl-facebook'></i>Sign in With Facebook
+						</button>
+					</div>
+				</div>
+			</section>
+		</main>
+	</section>
+</body>
+
+</html>
