@@ -3,19 +3,22 @@ package com.mindScrub.entities;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "post-table")
+@Table(name = "post_table")
 @Data
 public class Post {
 	@Id
@@ -40,10 +43,18 @@ public class Post {
 	private String blogImageName;
 	
 	@CreationTimestamp
-	@Column(updatable = false)
+	@Column(name = "created_at", updatable = false)
 	private LocalDateTime createAt;
-	
-	@UpdateTimestamp
-	@Column(insertable = false)
+
+	@Column(name = "updated_at")
 	private LocalDateTime updateAt;
+
+	@PreUpdate
+	public void onUpdate() {
+	    this.updateAt = LocalDateTime.now();
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "category_id")
+	private Category category;
 }

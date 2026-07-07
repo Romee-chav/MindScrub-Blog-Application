@@ -7,5 +7,6 @@ import com.mindScrub.entities.Category;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long>{
-
+	
+	boolean existsByNameIgnoreCase(String name);
 }

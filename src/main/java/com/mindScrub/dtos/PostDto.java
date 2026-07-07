@@ -30,4 +30,6 @@ public class PostDto {
 	
 	private LocalDateTime createAt;
 	private LocalDateTime updateAt;
+	
+	private Long categoryId;
 }

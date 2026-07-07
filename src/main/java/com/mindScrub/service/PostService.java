@@ -1,5 +1,7 @@
 package com.mindScrub.service;
 
-public interface PostService {
+import com.mindScrub.dtos.PostDto;
 
+public interface PostService {
+	PostDto savePost(PostDto postDto);
 }
