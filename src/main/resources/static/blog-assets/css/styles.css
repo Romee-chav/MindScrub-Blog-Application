@@ -36,9 +36,9 @@ img {
 	max-width: 100%;
 }
 
-/* section {
+section {
 	padding: 3rem 0 2rem;
-} */
+}
 
 .container {
 	max-width: 1068px;
@@ -1001,4 +1001,23 @@ header.shadow .logo {
     color: #e74c3c;
     font-size: 0.9rem;
     margin-top: 5px;
+}
+
+.no-posts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px; /* Adjust height as needed */
+    text-align: center;
+}
+
+.no-posts h2 {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.no-posts p {
+    color: #888;
+    font-size: 16px;
 }

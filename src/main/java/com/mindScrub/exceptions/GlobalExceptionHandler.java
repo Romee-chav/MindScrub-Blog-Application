@@ -34,4 +34,9 @@ public class GlobalExceptionHandler {
         return "redirect:/post/createPost";
     }
 	
+	@ExceptionHandler(PostIdNotFoundException.class)
+	public String handlePostNotFound(PostIdNotFoundException ex, RedirectAttributes redirectAttributes) {
+		redirectAttributes.addFlashAttribute("error", ex.getMessage());
+		return "redirect:/post/allpost";
+	}
 }

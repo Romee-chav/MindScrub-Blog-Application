@@ -2,7 +2,10 @@ package com.mindScrub.dtos;
 
 import java.time.LocalDateTime;
 
+import com.mindScrub.entities.PostStatus;
+
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,12 +27,13 @@ public class PostDto {
 	@NotEmpty(message = "Content cannot be empty")
 	private String content;
 	
-	private String status;
+	private PostStatus status;
 
 	private String blogImageName;
 	
 	private LocalDateTime createAt;
 	private LocalDateTime updateAt;
-	
+	@NotNull(message = "Please select the category!!")
 	private Long categoryId;
+	private String categoryName;
 }

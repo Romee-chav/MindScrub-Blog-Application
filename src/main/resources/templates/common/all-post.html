@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/baseUi :: baseLayout('MindScribe - All Post', ~{::section})}">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Posts</title>
+</head>
+
+<body>
+	<section>
+		<div class="table-container">
+			<h2>All Posts</h2>
+
+			<table id="postsTable">
+				<thead>
+					<tr>
+						<th>SNo</th>
+						<th>Post Title</th>
+						<th>Short Desc</th>
+						<th>Category</th>
+						<!-- <th>Author</th> -->
+						<th>Posted On</th>
+						<th>Status</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr th:each="post,status : ${allPostsForCurrentUser.content}">
+						<td data-label="#" th:text="${status.count}">1</td>
+
+						<td data-label="Post Title" th:text="${post.title}"></td>
+
+						<td data-label="Short Description"
+							th:utext="${post.shortDesc.length() > 40 ? post.shortDesc.substring(0,40)+ '...': post.shortDesc}"></td>
+
+						<!-- Category -->
+						<td data-label="Category"><span class="badge"
+							th:classappend="${
+                    post.categoryName == 'Programming' ? ' bg-primary' :
+                    post.categoryName == 'Technology'  ? ' bg-info' :
+                    post.categoryName == 'Food' ? ' bg-secondary' :
+                    ' bg-secondary'
+              }"
+							th:text="${post.categoryName}"></span></td>
+
+						<!-- Author -->
+						<!-- <td data-label="Author" th:text="${post.user.fullName}"></td> -->
+
+						<!-- Date -->
+						<td data-label="Date"
+							th:text="${#temporals.format(post.createAt,'dd MMMM yyyy hh:mm a')}">
+						</td>
+
+						<!-- Status -->
+						<td data-label="Status"><span class="badge"
+							th:classappend="${
+              post.status.name() == 'APPROVED' ? ' bg-success' :
+              post.status.name() == 'PENDING' ? ' bg-warning text-dark' :
+              post.status.name() == 'REJECTED' ? ' bg-danger' :
+              ' bg-secondary'
+          }"
+							th:text="${post.status}"> </span></td>
+
+						<!-- Actions -->
+						<td data-label="Actions">
+							<!-- Approve -->
+							<form th:action="@{/admin/{id}/approve(id=${post.id})}"
+								method="post" style="display: inline;"
+								th:if="${post.status.name() == 'PENDING' || post.status.name() == 'REJECTED'}">
+
+								<button type="submit" class="comment-btn">Approve</button>
+							</form> <!-- Reject -->
+							<form th:action="@{/admin/{id}/reject(id=${post.id})}"
+								method="post" style="display: inline;"
+								th:if="${post.status.name() == 'PENDING' || post.status.name() == 'APPROVED'}"
+								onsubmit="return confirm('Reject this post?');">
+
+								<button type="submit" class="comment-btn delete">
+									Reject</button>
+							</form>
+
+							<a class="comment-btn"
+								th:href="@{'/post/editPost?postId=' + ${post.id}}">
+								Edit</a> <!-- View --> <a class="comment-btn"
+							th:href="@{'/post/veiwPostData?postId=' + ${post.id}}"> View
+						</a> <a class="comment-btn delete"
+							th:href="@{'/post/deletePost?postId=' + ${post.id}}"
+							onsubmit="return confirm('Delete this post?');"> Delete</a>
+						</td>
+					</tr>
+					<!-- Additional rows will be generated from backend -->
+				</tbody>
+			</table>
+			<div class="no-posts" th:if="${allPostsForCurrentUser.empty}">
+				<h2>No Posts Found</h2>
+				<p>Create your first post to see it here.</p>
+			</div>
+			<!-- Pagination -->
+			<div class="pagination container"
+				th:if="${allPostsForCurrentUser.totalPages > 0}">
+				<!-- Previous -->
+				<a th:if="${!allPostsForCurrentUser.first}"
+					th:href="@{/post/allpost(page=${allPostsForCurrentUser.number-1})}"
+					class="page-btn prev"> « Prev </a>
+
+				<!-- Page Numbers -->
+				<a
+					th:each="i : ${#numbers.sequence(0, allPostsForCurrentUser.totalPages-1)}"
+					th:text="${i+1}" th:href="@{/post/allpost(page=${i})}"
+					th:class="${i==currentPage} ? 'page-btn active' : 'page-btn'">
+				</a>
+
+				<!-- Next -->
+				<a th:if="${!allPostsForCurrentUser.last}"
+					th:href="@{/post/allpost(page=${allPostsForCurrentUser.number+1})}"
+					class="page-btn next"> Next » </a>
+
+			</div>
+
+		</div>
+	</section>
+</body>
+
+</html>

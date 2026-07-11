@@ -11,27 +11,6 @@ public class HomeController {
 	public String home() {
 		return "index";
 	}
-
-	@GetMapping("/users/veiwPost")
-	public String viewPost(Model model) {
-		model.addAttribute("showHeader", true);
-		model.addAttribute("showFooter", true);
-		return "users/view-post";
-	}
-	
-	@GetMapping("/users/editPost")
-	public String editPost(Model model) {
-		model.addAttribute("showHeader", false);
-		model.addAttribute("showFooter", false);
-		return "users/edit-post";
-	}
-	
-	@GetMapping("/users/allPost")
-	public String allPost(Model model) {
-		model.addAttribute("showHeader", false);
-		model.addAttribute("showFooter", false);
-		return "users/all-post";
-	}
 	
 	@GetMapping("/users/page-not-found")
 	public String notFound(Model model) {

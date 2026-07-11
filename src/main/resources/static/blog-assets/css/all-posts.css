@@ -162,6 +162,38 @@ td .badge:hover {
     cursor: not-allowed;
 } */
 
+#postsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#postsTable th,
+#postsTable td {
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#postsTable th:last-child,
+#postsTable td:last-child {
+    min-width: 270px;
+}
+/* Button */
+td[data-label="Actions"] {
+    white-space: nowrap;
+}
+
+.comment-btn {
+    display: inline-block;
+    margin: 2px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
 /* ===============================
    Responsive Styles
 =============================== */

@@ -1,9 +1,11 @@
 package com.mindScrub.controllers;
 
+import java.io.File;
 import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -31,7 +33,7 @@ public class PostController {
 
 	@Autowired
 	private PostService postService;
-	
+
 	@Autowired
 	private CategoryService catService;
 
@@ -39,10 +41,10 @@ public class PostController {
 	public String showCreatePost(Model model) {
 		model.addAttribute("showHeader", false);
 		model.addAttribute("showFooter", false);
-		List<CategoryDto> allCategory = catService.getAllCategory();
+		List<CategoryDto> allCategories = catService.getAllCategory();
 		PostDto postDto = new PostDto();
 		model.addAttribute("post", postDto);
-		model.addAttribute("categories", allCategory);
+		model.addAttribute("categories", allCategories);
 		return "common/create-post";
 	}
 
@@ -65,8 +67,9 @@ public class PostController {
 			if (!("image/jpeg".equals(contentType) || "image/png".equals(contentType))) {
 				model.addAttribute("showHeader", false);
 				model.addAttribute("showFooter", false);
+				List<CategoryDto> allCategories = catService.getAllCategory();
 				model.addAttribute("post", postDto);
-				model.addAttribute("categories", catService.getAllCategory());
+				model.addAttribute("categories", allCategories);
 				model.addAttribute("error", "Only JPG, JPEG and PNG images are allowed.");
 				return "common/create-post";
 			}
@@ -84,14 +87,14 @@ public class PostController {
 		}
 
 		// Convert Title to URL
-		String titleToUrl = Convert.titleToUrl(postDto.getTitle());
-		postDto.setUrl(titleToUrl);
+		String convertedTitle = Convert.titleToUrl(postDto.getTitle());
+		postDto.setUrl(convertedTitle);
 
 		String imageName = "";
 		if (!imagePart.isEmpty()) {
 			imageName = StringUtils.cleanPath(Objects.requireNonNull(imagePart.getOriginalFilename()));
 			postDto.setBlogImageName(imageName);
-		}else {
+		} else {
 			redirectAttributes.addFlashAttribute("error", "please upload the image!!!");
 			return "redirect:/post/createPost";
 		}
@@ -114,4 +117,48 @@ public class PostController {
 		return "redirect:/post/createPost";
 	}
 
+	@GetMapping("/allpost")
+	public String allPost(@RequestParam(defaultValue = "0") int page, Model model) {
+		int size = 4;
+		Page<PostDto> allPostsForCurrentUser = postService.showAllPostsForCurrentUser(page, size);
+		model.addAttribute("showHeader", false);
+		model.addAttribute("showFooter", false);
+		model.addAttribute("allPostsForCurrentUser", allPostsForCurrentUser);
+		model.addAttribute("currentPage", page);
+		return "common/all-post";
+	}
+
+	@GetMapping("/veiwPostData")
+	public String viewPost(@RequestParam("postId") int postId, Model model) {
+		PostDto postDto = postService.getPostById(postId);
+		model.addAttribute("showHeader", true);
+		model.addAttribute("showFooter", true);
+		model.addAttribute("post", postDto);
+		return "common/view-post";
+	}
+
+	@GetMapping("/deletePost")
+	public String deletePost(@RequestParam("postId") int postId) {
+		String folderPath = "blogFiles/" + postId;
+		File file = new File(folderPath);
+		if(file.exists()) {
+			for(File f: file.listFiles()) {
+				f.delete();
+			}
+			file.delete();
+		}
+		postService.deletePostById(postId);
+		return "redirect:/post/allpost";
+	}
+
+	@GetMapping("/editPost")
+	public String editPost(@RequestParam("postId") int postId,Model model) {
+		List<CategoryDto> categories = catService.getAllCategory();
+		PostDto postDto = postService.getPostById(postId);
+		model.addAttribute("showHeader", false);
+		model.addAttribute("showFooter", false);
+		model.addAttribute("post",postDto);
+		model.addAttribute("categories",categories);
+		return "common/edit-post";
+	}
 }
