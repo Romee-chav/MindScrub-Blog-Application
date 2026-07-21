@@ -12,7 +12,14 @@
 	<section>
 		<div class="table-container">
 			<h2>All Posts</h2>
-
+			<!-- Alert Message -->
+			<div th:if="${success}" class="alert alert-success">
+				<span th:text="${success}"></span>
+			</div>
+			<div th:if="${error}" class="alert alert-danger">
+				<span th:text="${error}"></span>
+			</div>
+			<!-- End Alert Message -->
 			<table id="postsTable">
 				<thead>
 					<tr>
@@ -80,11 +87,9 @@
 
 								<button type="submit" class="comment-btn delete">
 									Reject</button>
-							</form>
-
+							</form> <a class="comment-btn"
+							th:href="@{'/post/editPost?postId=' + ${post.id}}"> Edit</a> <!-- View -->
 							<a class="comment-btn"
-								th:href="@{'/post/editPost?postId=' + ${post.id}}">
-								Edit</a> <!-- View --> <a class="comment-btn"
 							th:href="@{'/post/veiwPostData?postId=' + ${post.id}}"> View
 						</a> <a class="comment-btn delete"
 							th:href="@{'/post/deletePost?postId=' + ${post.id}}"

@@ -92,4 +92,20 @@ public class PostServiceImpl implements PostService {
 		Post post = postRepo.findById(postId).orElseThrow(() -> new PostIdNotFoundException("Post Id not found"));
 		postRepo.delete(post);
 	}
+
+	@Override
+	public PostDto updatePost(PostDto postDto) {
+		Post existingPost = postRepo.findById(postDto.getId())
+				.orElseThrow(() -> new PostIdNotFoundException("Post Id not found"));
+		existingPost.setTitle(postDto.getTitle());
+		existingPost.setShortDesc(postDto.getShortDesc());
+		existingPost.setContent(postDto.getContent());
+		existingPost.setBlogImageName(postDto.getBlogImageName());
+		Category category = catRepo.findById(postDto.getCategoryId())
+				.orElseThrow(() -> new CategoryIdNotFoundException("Category Id Not Found !!"));
+		existingPost.setCategory(category);
+		Post entity = postRepo.save(existingPost);
+		return modelMapper.map(entity, PostDto.class);
+	}
+
 }

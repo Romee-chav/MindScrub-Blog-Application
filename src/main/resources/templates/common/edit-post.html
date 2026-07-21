@@ -13,65 +13,66 @@
 		<section class="auth-section">
 			<div class="post-container">
 				<h2>Edit Post</h2>
-				<form th:action="@{/post/saved}" method="post"
-						enctype="multipart/form-data" th:object="${post}">
+				<form th:action="@{/post/update}" method="post"
+					enctype="multipart/form-data" th:object="${post}">
+					<input type="hidden" th:field="*{id}">
+					<input type="hidden" th:field="*{blogImageName}">
 					<!-- Title -->
-						<div class="form-group">
-							<label for="title">Post Title</label> <input type="text"
-								id="title" th:field="*{title}" placeholder="Enter post title">
-							<!-- Validation Error -->
-							<div th:if="${#fields.hasErrors('title')}" class="error-message">
-								<span th:errors="*{title}"></span>
-							</div>
+					<div class="form-group">
+						<label for="title">Post Title</label> <input type="text"
+							id="title" th:field="*{title}" placeholder="Enter post title">
+						<!-- Validation Error -->
+						<div th:if="${#fields.hasErrors('title')}" class="error-message">
+							<span th:errors="*{title}"></span>
 						</div>
+					</div>
 
-						<!-- Category Dropdown -->
-						<div class="form-group">
-							<label for="category">Add Category</label> <select id="category"
-								th:field="*{categoryId}">
-								<option value="">-- Select Category --</option>
-								<option th:each="cat : ${categories}" th:value="${cat.id}"
-									th:text="${cat.name}"></option>
-							</select>
-							<div class="alert alert-danger"
-								th:if="${#fields.hasErrors('categoryId')}"
-								th:errors="*{categoryId}"></div>
+					<!-- Category Dropdown -->
+					<div class="form-group">
+						<label for="category">Add Category</label> <select id="category"
+							th:field="*{categoryId}">
+							<option value="">-- Select Category --</option>
+							<option th:each="cat : ${categories}" th:value="${cat.id}"
+								th:text="${cat.name}"></option>
+						</select>
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('categoryId')}"
+							th:errors="*{categoryId}"></div>
+					</div>
+
+					<!-- File Upload -->
+					<div class="form-group">
+						<label for="file">Upload Image</label> <input type="file"
+							id="file" name="image">
+					</div>
+
+					<!-- Short Description -->
+					<div class="form-group">
+						<label for="shortDescription">Short Description</label>
+						<textarea id="shortDescEditor" rows="3"
+							placeholder="Enter a short description..."
+							th:field="*{shortDesc}"></textarea>
+						<!-- Validation Error -->
+						<div th:if="${#fields.hasErrors('shortDesc')}"
+							class="error-message">
+							<span th:errors="*{shortDesc}"></span>
 						</div>
+					</div>
 
-						<!-- File Upload -->
-						<div class="form-group">
-							<label for="file">Upload Image</label> <input type="file"
-								id="file" name="image">
+					<!-- Content -->
+					<div class="form-group">
+						<label for="content">Content</label>
+						<textarea id="contentEditor" rows="10"
+							placeholder="Write your full post content here..."
+							th:field="*{content}"></textarea>
+						<!-- Validation Error -->
+						<div th:if="${#fields.hasErrors('content')}" class="error-message">
+							<span th:errors="*{content}"></span>
 						</div>
+					</div>
 
-						<!-- Short Description -->
-						<div class="form-group">
-							<label for="shortDescription">Short Description</label>
-							<textarea id="shortDescEditor" rows="3"
-								placeholder="Enter a short description..."
-								th:field="*{shortDesc}"></textarea>
-							<!-- Validation Error -->
-							<div th:if="${#fields.hasErrors('shortDesc')}"
-								class="error-message">
-								<span th:errors="*{shortDesc}"></span>
-							</div>
-						</div>
-
-						<!-- Content -->
-						<div class="form-group">
-							<label for="content">Content</label>
-							<textarea id="contentEditor" rows="10"
-								placeholder="Write your full post content here..."
-								th:field="*{content}"></textarea>
-							<!-- Validation Error -->
-							<div th:if="${#fields.hasErrors('content')}"
-								class="error-message">
-								<span th:errors="*{content}"></span>
-							</div>
-						</div>
-
-						<!-- Submit Button -->
-						<button type="submit" class="btn">Update Post</button>
+					<!-- Submit Button -->
+					<button type="submit" class="btn">Update Post</button>
 				</form>
 			</div>
 		</section>

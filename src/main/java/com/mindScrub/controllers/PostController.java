@@ -26,9 +26,11 @@ import com.mindScrub.utils.Convert;
 import com.mindScrub.utils.FileUpload;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("/post")
+@Slf4j
 public class PostController {
 
 	@Autowired
@@ -141,8 +143,8 @@ public class PostController {
 	public String deletePost(@RequestParam("postId") int postId) {
 		String folderPath = "blogFiles/" + postId;
 		File file = new File(folderPath);
-		if(file.exists()) {
-			for(File f: file.listFiles()) {
+		if (file.exists()) {
+			for (File f : file.listFiles()) {
 				f.delete();
 			}
 			file.delete();
@@ -152,13 +154,53 @@ public class PostController {
 	}
 
 	@GetMapping("/editPost")
-	public String editPost(@RequestParam("postId") int postId,Model model) {
+	public String editPost(@RequestParam("postId") int postId, Model model) {
 		List<CategoryDto> categories = catService.getAllCategory();
 		PostDto postDto = postService.getPostById(postId);
 		model.addAttribute("showHeader", false);
 		model.addAttribute("showFooter", false);
-		model.addAttribute("post",postDto);
-		model.addAttribute("categories",categories);
+		model.addAttribute("post", postDto);
+		model.addAttribute("categories", categories);
 		return "common/edit-post";
+	}
+
+	@PostMapping("/update")
+	public String updatePost(@Valid @ModelAttribute("post") PostDto postDto, BindingResult bindingResult,
+			RedirectAttributes redirectAttributes, @RequestParam("image") MultipartFile imagePart, Model model) {
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("showHeader", false);
+			model.addAttribute("showFooter", false);
+			model.addAttribute("post", postDto);
+			return "common/edit-post";
+		}
+		if (imagePart != null && !imagePart.isEmpty()) {
+			if (postDto.getBlogImageName() != null) {
+				String oldImagePath = "blogFiles/" + postDto.getId() + "/" + postDto.getBlogImageName();
+				File oldImageFile = new File(oldImagePath);
+				if (oldImageFile.exists()) {
+					log.info("Old Image is deleted !!");
+					oldImageFile.delete();
+				}
+			}
+
+			String newImageName = StringUtils.cleanPath(Objects.requireNonNull(imagePart.getOriginalFilename()));
+			postDto.setBlogImageName(newImageName);
+			String uploadDirectory = "blogFiles/" + postDto.getId();
+			boolean isImageSaved = FileUpload.save(uploadDirectory, newImageName, imagePart);
+
+			if (isImageSaved) {
+				redirectAttributes.addFlashAttribute("success", "Blog Added!");
+			} else {
+				redirectAttributes.addFlashAttribute("error", "Image could not be saved.");
+			}
+
+		}
+		PostDto updatePost = postService.updatePost(postDto);
+		if(updatePost != null) {
+			redirectAttributes.addFlashAttribute("success", "Blog Updated !!");
+		}else {
+			redirectAttributes.addFlashAttribute("error", "Blot Not Updated !!");
+		}
+		return "redirect:/post/allpost";
 	}
 }
